@@ -1,2 +1,2 @@
 # Strat-Board
-GAME
+GAEM
