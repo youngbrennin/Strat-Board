@@ -1,0 +1,46 @@
+
+[
+    {
+      "id": 1,
+      "name": "Pawn",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902122/63174903-vector-single-sketch-chess-figure-pawn-on-white-background.jpg",
+      "damage": "8",
+      "imageTwo": "../../images/pawnChart.png"
+
+    },
+    {
+      "id": 2,
+      "name": "Rook",
+      "image": "https://us.123rf.com/450wm/nikiteev/nikiteev1609/nikiteev160902123/63174906-vector-single-sketch-chess-figure-rook-on-white-background.jpg?ver=6",
+      "damage": "6"
+
+    },
+    {
+      "id": 3,
+      "name": "Knight",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902124/63174905-vector-single-sketch-chess-figure-knight-on-white-background.jpg",
+      "damage": "4"
+
+    },
+    {
+      "id": 4,
+      "name": "Bishop",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902127/63174911-vektor-einzelne-skizze-schach-figur-bischof-auf-wei%C3%9Fem-hintergrund.jpg",
+      "damage": "5"
+    },
+    {
+      "id": 5,
+      "name": "Queen",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902126/63174907-vector-single-sketch-chess-figure-queen-on-white-background.jpg",
+      "damage": "3"
+
+    },
+    {
+      "id": 6,
+      "name": "King",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902125/63174908-vector-single-sketch-chess-figure-king-on-white-background.jpg",
+      "damage": "7"
+
+    }
+  ]
+  
