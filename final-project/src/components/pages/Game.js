@@ -5,7 +5,6 @@ const Game = ({match}) => (
     <div>
       <h1>Game</h1>
       Game ID: {match.params.gameID}
-      <Board />
     </div>
   );
 
