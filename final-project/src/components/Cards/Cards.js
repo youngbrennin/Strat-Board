@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Cards.css";
+// import cards from "./cards.json";
 
 const Cards = props => (
     <div className="card">
@@ -20,4 +21,7 @@ const Cards = props => (
 
     </div>
   );
+
+   
 export default Cards;
+
