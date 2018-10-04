@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Cards.css";
-// import cards from "./cards.json";
+
 
 const Cards = props => (
     <div className="card">

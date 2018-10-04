@@ -1,0 +1,38 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("./chess.png");
+
+    /* Full height */
+    height: 100vh; 
+
+    
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.login {
+    height:20vh;
+    width: 30vw;
+    background-color: white;
+    position: absolute;
+    opacity: .3;
+    text-align: center;
+    margin-left: 30%;
+    margin-top: 15%;
+    color: black;
+    font-size: 44px;
+}
+
+.loginBtn {
+    background-color: black;
+    color: white;
+}

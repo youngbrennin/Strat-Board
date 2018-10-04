@@ -28,7 +28,8 @@
 .container {
     width: 100% !important;
     height: 100% !important;
-    margin-left: 10%;
+    margin-left: 5%;
+    margin-top: 2%;
 }
 
 .row .col{
@@ -43,4 +44,9 @@
     border: 5px dotted black;
     color: black;
     background: rgba(0,0,0,0);
+  }
+
+  .card {
+      float: left;
+      margin: 1%;
   }
