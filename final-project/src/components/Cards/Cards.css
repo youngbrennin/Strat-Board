@@ -1,19 +1,20 @@
 .card {
   background: #fff;
   border-radius: 2px;
-  height: 550px;
-  margin: 1rem;
+  height: 400px;
+  /* margin: 1rem; */
   position: relative;
-  width: 350px;
+  width: 250px;
   box-shadow: 0 3px 6px #999, 0 3px 6px #999;
   text-align: left;
+
 }
 
 .card > .img-container {
   height: 80%;
   overflow: hidden;
   text-align: center;
-  background:#acadaf;
+  background:white;
 }
 .card > .img-container > img {
   width: 95%;
@@ -25,6 +26,9 @@
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: 15px;
+  background-color: #999;
+  color: white;
+  opacity: 1;
 }
 
 .card > .content > ul {
@@ -32,10 +36,11 @@
 }
 
 .card > .content > ul > li {
-  margin-top: 18px;
+  margin-top: 0px;
 }
 img.cardBackground {
-  opacity: .1;
+  opacity: .5;
+ position: absolute;
 }
 
 ul{
@@ -43,6 +48,12 @@ ul{
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   margin-bottom: 8%;
+}
+
+.cardMove {
+  position: relative;
+  opacity: .8;
+
 }
 
   
