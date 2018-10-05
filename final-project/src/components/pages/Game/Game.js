@@ -37,7 +37,7 @@ fiveRandomCards = () => {
   // console.log(this.state.fiverandomcards);
   return(
     randomArray.map(e=>{
-      return( <Cards name={cards[e].name}/>)
+      return( <Cards name={cards[e].name} damage={cards[e].damage} image={cards[e].image} imageTwo={cards[e].imageTwo} />)
     })
   )
   // <Cards name={cards[e].name} />)
@@ -47,33 +47,16 @@ render() {
   return (
     <div>
       {/* <h1>Game</h1> */}
-      <div class="row">
-        <div class="col s6">
+      <div className="row">
+        <div className="col s6">
           <Board />
           </div>
-        <div class="col s6">
-      {this.fiveRandomCards(
-        <Cards
-        id={cards.id}
-        key={cards.id}
-        name={cards.name}
-        image={cards.image}
-        damage={cards.damage}
-        imageTwo={cards.imageTwo}
-        />
-        )}
+        <div className="col s6">
+      {this.fiveRandomCards()}
         </div>
         </div>
-      {/* {this.state.cards.map(card => (
-          <Cards
-            id={card.id}
-            key={card.id}
-            name={card.name}
-            image={card.image}
-            damage={card.damage}
-            imageTwo={card.imageTwo}
-          />
-        ))} */}
+      {/* {/* {this.state.cards.map(card => ( */}
+
     </div>
   );
 }
