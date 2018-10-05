@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Board from "./components/Board";
-import Cards from "./components/Cards";
+
 import cards from "./cards.json";
-import Splash from "./components/pages/Splash.js";
-import Game from "./components/pages/Game.js";
-import MatchMaking from "./components/pages/MatchMaking.js";
-import NavTabs from "./components/NavTabs/NavTabs.js";
+import Splash from "./components/pages/Splash/Splash";
+import Game from "./components/pages/Game/Game";
+import MatchMaking from "./components/pages/MatchMaking/MatchMaking";
 import './App.css';
 
 class App extends Component {
-    // Setting this.state.friends to the friends json array
+    // Setting this.state.cards to the cards json array
     state = {
       cards
     };
@@ -20,6 +18,7 @@ class App extends Component {
     return (
     
     <Router>
+      
     <div>
       <Route exact path="/" component={Splash} />
       <Route exact path="/MatchMaking" component={MatchMaking} />
