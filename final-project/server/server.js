@@ -7,7 +7,7 @@ var passport = require('passport');
 
 // Init App
 const app = express();
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 4000
 
 // Require models for syncing
 const db = require('./models');
