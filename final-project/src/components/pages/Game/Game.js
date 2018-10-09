@@ -48,10 +48,10 @@ render() {
     <div>
       {/* <h1>Game</h1> */}
       <div className="row">
-        <div className="col s6">
+        <div className="col s5">
           <Board />
           </div>
-        <div className="col s6">
+        <div className="col s7">
       {this.fiveRandomCards()}
         </div>
         </div>
