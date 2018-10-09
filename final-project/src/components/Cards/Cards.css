@@ -18,7 +18,7 @@
 }
 .card > .img-container > img {
   width: 95%;
-  height: 95%;
+  height: 80%;
   padding-top: 5%;
 }
 
@@ -52,8 +52,9 @@ ul{
 
 .cardMove {
   position: relative;
-  opacity: .8;
-
+  opacity: .6;
+  margin-top: 0%;
+  height: 100% !important;
 }
 
   
