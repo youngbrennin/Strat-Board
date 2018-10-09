@@ -1,0 +1,16 @@
+insert into cards (id, name, damage) values ( 1, "Pawn", 8);
+insert into cards (id, name, damage) values ( 2, "Pawn", 8);
+insert into cards (id, name, damage) values ( 3, "Pawn", 8);
+insert into cards (id, name, damage) values ( 4, "Pawn", 8);
+insert into cards (id, name, damage) values ( 5, "Pawn", 8);
+insert into cards (id, name, damage) values ( 6, "Pawn", 8);
+insert into cards (id, name, damage) values ( 7, "Pawn", 8);
+insert into cards (id, name, damage) values ( 8, "Pawn", 8);
+insert into cards (id, name, damage) values ( 9, "Rook", 4);
+insert into cards (id, name, damage) values ( 10, "Rook", 4);
+insert into cards (id, name, damage) values ( 11, "Knight", 5);
+insert into cards (id, name, damage) values ( 12, "Knight", 5);
+insert into cards (id, name, damage) values ( 13, "Bishop", 5);
+insert into cards (id, name, damage) values ( 14, "Bishop", 5);
+insert into cards (id, name, damage) values ( 15, "Queen", 3);
+insert into cards (id, name, damage) values ( 16, "King", 7);
