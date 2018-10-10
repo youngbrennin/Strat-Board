@@ -1,13 +1,5 @@
 // makeCard factory returns an object for the specified card
 
-const blankCard = function() {
-    
-
-    
-
-
-}
-
 const makePath = require('./makePath');
 
 const makeCard = function(cardName) {
@@ -18,6 +10,7 @@ const makeCard = function(cardName) {
         this.paths.push(pathArray);
     }
 
+    // define paths for all pieces
     switch(cardName){
         case "rook":
             makePath.addSegment("standard", 0, 1, 4);
@@ -124,8 +117,7 @@ const makeCard = function(cardName) {
 
 module.exports = makeCard;
 
-
-// expected array format for paths
+// path array format
 // [
 //     {
 //         type: "move",
