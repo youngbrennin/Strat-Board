@@ -12,7 +12,7 @@ const Splash = () => (
             <p>Login or Register with:</p>
 
             
-            <a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google</a>
+            <a href="auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google</a>
 
           </div>
           {/* <button className="loginBtn">Login</button> */}
