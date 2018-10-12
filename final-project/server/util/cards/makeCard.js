@@ -1,8 +1,12 @@
 // makeCard factory returns an object for the specified card
 
 const makePath = require('./makePath');
+const cardUtil = require('./cardUtil');
 
-const makeCard = function(cardName) {
+const makeCard = function(x, y, cardName = "none") {
+    this.x = x;
+    this.y = y;
+
     this.paths = [];
 
     this.addPath = function(pathArray){
@@ -12,6 +16,8 @@ const makeCard = function(cardName) {
 
     // define paths for all pieces
     switch(cardName){
+        case "none":
+            break;
         case "rook":
             makePath.addSegment("standard", 0, 1, 4);
             this.addPath(makePath.getAndReset());
@@ -112,10 +118,34 @@ const makeCard = function(cardName) {
             break;
     }
 
-    
+    this.getPosition = function() {
+        let position = {
+            x: this.x,
+            y: this.y
+        }
+        return position;
+    }
+
+    this.getValidMoves = function(cardArray) {
+        // Input should be an array of card objects that are on the board
+        // This assumes that the cards have a getPosition() method that returns {x: x, y: y}
+
+        let validMoves = [];
+
+        this.paths.forEach(path => {
+            let theseMoves = cardUtil.checkPath(cardArray, path, this.x, this.y);
+            validMoves = validMoves.concat(theseMoves);
+        });
+        console.log(validMoves)
+        return validMoves;
+    }
 }
 
 module.exports = makeCard;
+
+let cardArray = [new makeCard(0, 1)];
+let thisCard = new makeCard(3,1,"rook");
+thisCard.getValidMoves(cardArray);
 
 // path array format
 // [
