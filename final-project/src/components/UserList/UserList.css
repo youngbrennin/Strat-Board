@@ -1,0 +1,16 @@
+.card-panel p {
+text-align:left; 
+font-family: 'Roboto', sans-serif; 
+font-weight: bolder; 
+font-size: 20px;
+}
+
+
+.join{
+    font-size: 20px;
+}
+
+.spectate{
+    float: right;
+    font-size: 20px;
+}
