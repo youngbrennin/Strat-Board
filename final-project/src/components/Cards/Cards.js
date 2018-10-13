@@ -18,7 +18,6 @@ const Cards = props => (
           </li>
         </ul>
       </div>
-
     </div>
   );
 

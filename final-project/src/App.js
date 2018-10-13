@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
 import cards from "./cards.json";
 import Splash from "./components/pages/Splash/Splash";
 import Game from "./components/pages/Game/Game";
