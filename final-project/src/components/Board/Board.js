@@ -4,12 +4,7 @@ import Tile from "../Tile";
 
 
 class Board extends Component {
-    // renderSquare(i) {
-    //     return <Tile
-    //         piece={this.props.Tile[i]}
-    //         onClick={() => this.props.onClick(i)}
-    //     />
-    // }
+
     render() {
         const board = [];
         for (let i = 0; i < 8; i++) {

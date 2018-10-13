@@ -5,7 +5,7 @@ const Splash = () => (
   <div>
     
       <div className="bg">
-        <div className="login">Welcome to Card Chess!
+        <div className="login">
 
           <div className="jumbotron text-center">
             <p>Welcome to Card Chess!</p>
