@@ -18,7 +18,8 @@ app.use(express.static("client/build"));
 //Body Parser Middleware 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-
+const apiRoutes = require("../routes/api-routes");
+app.use('/api', apiRoutes);
 // passport setup (PLS don't move this)
 require('./config/passport.js')(app, passport, db);
 

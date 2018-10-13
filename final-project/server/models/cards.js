@@ -15,12 +15,12 @@ module.exports = function(sequelize, DataTypes){
             defaultValue: 0,
             primaryKey: true
         }
-        },
-        {
-            classMethods: {
-                associate: function(models){
-                }
-            }
-    });
+
+    },
+    {
+        timestamps: false
+      }
+    );
+
     return Cards;
-}
+};

@@ -19,17 +19,17 @@ body, html {
     position: relative;
 }
 
-.login {
-    height:20vh;
+.jumbotron {
+    height:30vh;
     width: 30vw;
     background-color: white;
     position: absolute;
-    opacity: .3;
+    opacity: .5;
     text-align: center;
     margin-left: 30%;
     margin-top: 15%;
     color: black;
-    font-size: 44px;
+    font-size: 32px;
 }
 
 .loginBtn {

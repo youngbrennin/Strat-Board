@@ -2,64 +2,81 @@ import React, { Component } from "react";
 import Board from "../../Board/Board";
 import Cards from "../../Cards/Cards";
 import cards from "../../../cards.json";
+import api from "../../../utils/api";
 
 
 
 class Game extends Component {
-// Setting this.state.cards to the cards json array
+  // Setting this.state.cards to the cards json array
   state = {
     cards,
-    fiverandomcards:[]
-};
+    CardsInHand: [],
+    deck: [],
+    hand: []
+  };
 
-
-shuffle = () => {
-  console.log("Shuffling...");
-  const cards = this.state.cards;
-  for (var i = 0; i < cards.length - 1; i++) {
-    var j = i + Math.floor(Math.random() * (cards.length - i));
-    var temp = cards[j];
-    cards[j] = cards[i];
-    cards[i] = temp;
+  componentDidMount() {
+    this.loadCards()
   }
-}
+  
+  loadCards = () => {
+    api.getCards()
+      .then(res => {
+        console.log(res.data); 
+        this.setState({ deck: res.data });
+        console.log(this.state);      
+      })
+      .catch(err => console.log(err));
+  };
 
-fiveRandomCards = () => {
-  var randomArray = [];
-  for (var i = 0; i < 5; i++){
-    var random = Math.floor(Math.random() * (16 - i));
-    // this.setState({fiverandomcards:[random]})
-    // console.log(this.state.fiverandomcards);
-  randomArray.push(random);
-  }
-  console.log(randomArray);
-  // this.setState({fiverandomcards:[random]})
-  // console.log(this.state.fiverandomcards);
-  return(
-    randomArray.map(e=>{
-      return( <Cards name={cards[e].name} damage={cards[e].damage} image={cards[e].image} imageTwo={cards[e].imageTwo} />)
-    })
-  )
-  // <Cards name={cards[e].name} />)
-}
 
-render() {
-  return (
-    <div>
-      {/* <h1>Game</h1> */}
-      <div className="row">
-        <div className="col s5">
-          <Board />
+
+
+CardsInHand = () => {
+    var hand = [];
+    for (var i = 0; i < 5; i++) {
+      var random = Math.floor(Math.random() * (16 - i));
+      
+      hand.push(random);
+    }
+    console.log(hand);
+    
+    return (
+      hand.map(e => {
+        return (<Cards name={cards[e].name} damage={cards[e].damage} image={cards[e].image} imageTwo={cards[e].imageTwo} />)
+      })
+      )
+    }
+
+  
+    
+    render() {
+      return (
+        <div>
+
+        <div className="row">
+          <div className="col s6">
+            <Board />
           </div>
-        <div className="col s7">
-      {this.fiveRandomCards()}
+          <div className="col s6">
+            {this.CardsInHand()}
+          </div>
         </div>
-        </div>
-      {/* {/* {this.state.cards.map(card => ( */}
 
-    </div>
-  );
-}
+      </div>
+    );
+  }
 }
 
 export default Game;
+
+  // shuffle = () => {
+  //   console.log("Shuffling...");
+  //   const cards = this.state.cards;
+  //   for (var i = 0; i < cards.length - 1; i++) {
+  //     var j = i + Math.floor(Math.random() * (cards.length - i));
+  //     var temp = cards[j];
+  //     cards[j] = cards[i];
+  //     cards[i] = temp;
+  //   }
+  // }

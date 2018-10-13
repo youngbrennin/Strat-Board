@@ -1,9 +1,9 @@
 #greySquare, #whiteSquare  {
-    width:115px;
+    min-width: 115px;
     height: 110px;
     padding: 0%;
     margin: 0%;
-    float: left;
+    /* float: left; */
     background-color: white;
     /* background-color: grey; */
     text-align: center !important;
@@ -26,7 +26,7 @@
 }
 
 .container {
-    width: 100% !important;
+    width: 800px !important;
     height: 100% !important;
     margin-left: 5%;
     margin-top: 2%;
@@ -46,8 +46,7 @@
     background: rgba(0,0,0,0);
   }
 
-  .card {
+.card {
       float: left;
       margin: 1%;
   }
-
