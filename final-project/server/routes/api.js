@@ -7,12 +7,21 @@ module.exports = function (app, db) {
       });
   });
 
+  app.get("/api/user", function(req, res) {
+    if(!req.user){
+        return res.redirect("/");
+    }
+    res.json(req.user);
+  });
+
 }
 
 
-
-
-
+// This code *might* work to send people back to the splash screen when not logged in
+//
+// if(!req.user){
+//   return res.redirect("/");
+// }
   
   
 

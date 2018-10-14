@@ -2,15 +2,14 @@ import React from "react";
 import "./Welcome.css";
 
 
-const Welcome = () => {
+const Welcome = (props) => {
     return(
     <div className="row">
         <div className="col1 s12 m5">
             <div className="card-panel">
-                <p className="leftHead">Welcome back !
-                {/* <p className="leftHead">Welcome back {Account.userName}! */}
-              <span className="rightHead">Wins: Losses: </span>
-              {/* <span className="rightHead">Wins:{Account.winCount} Losses{Account.loseCount}</span> */}
+                <p className="leftHead">
+                    Welcome back, {props.name}!
+                    <span className="rightHead">Wins: {props.winCount} Losses: {props.loseCount}</span>
                 </p>
             </div>
         </div>
