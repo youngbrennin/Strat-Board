@@ -3,11 +3,19 @@ import Create from "../../Create/Create";
 // import JoinButton from "./Join/Join";
 import UserList from "../../UserList/UserList";
 import Welcome from "../../Welcome/Welcome";
+import api from "../../../utils/api";
 
 class MatchMaking extends Component {
 
     state = {
-        players: []
+        user : {
+            id : "",
+            name : "Loading...",
+            winCount : "",
+            loseCount : "",
+            activeGame : ""
+        },
+        player: []
     };
 
     listing() {
@@ -20,12 +28,25 @@ class MatchMaking extends Component {
 
     render() {
         return (
-            <div>
-                <Welcome />
+            <div>{console.log(this.state.user)}
+                <Welcome 
+                name = {this.state.user.name}
+                winCount = {this.state.user.winCount}
+                loseCount = {this.state.user.loseCount} />
                 <UserList />
                 <Create />
             </div>
         );
+    }
+
+    componentDidMount() {
+        this.getUserData();
+    }
+    
+    getUserData = () => {
+        api.getUserData().then(user => {
+            this.setState({user : user.data});
+        })
     }
 }
 // /* // const MatchMaking = () => (
@@ -36,6 +57,8 @@ class MatchMaking extends Component {
 // );
 
 // MAKE A GET WITH AXIOS UPON LOADING
+
+
 
 // MAKE A POST WITH AXIOS UPON CLICKING CREATE BUTTON
 

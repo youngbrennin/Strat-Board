@@ -26,7 +26,9 @@ module.exports = function(app, passport, db){
                 // Yes, I did use both user and User here.
                 id : User.id,
                 name : User.userName,
-                score : User.score
+                winCount : User.winCount,
+                loseCount : User.loseCount,
+                activeGame : User.activeGame
             }
             cb(null, user);
         });
