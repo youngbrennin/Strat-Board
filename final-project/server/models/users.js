@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes){
-    const Account = sequelize.define('Account', {
+    const Users = sequelize.define('Users', {
         googleID: {
             type: DataTypes.STRING,
             allowNull: false
@@ -28,5 +28,5 @@ module.exports = function(sequelize, DataTypes){
         }
     });
 
-    return Account;
+    return Users;
 }
