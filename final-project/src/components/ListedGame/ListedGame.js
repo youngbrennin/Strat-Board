@@ -1,5 +1,6 @@
 import React from "react";
 import "./ListedGame.css";
+import api from "../../utils/api";
 
 
 const ListedGame = (props) => {
@@ -13,12 +14,25 @@ const ListedGame = (props) => {
     }
   }
 
-  this.secondPlayer = () => {
+  this.joinGame = () => {
+    api.joinGame(props.id)
+    .then((joined) => {
+      if(joined) {console.log(props)
+          props.getGames();
+          props.getUser();
+      }
+      else {
+          props.getUser();
+      }
+  });
+  }
+
+  this.secondPlayer = () => {console.log(props.loggedInUser, props.player2);
     if(props.loggedInUser === props.player2)  {
       return <span>You</span>
     }
     else if(props.player2 === null && props.loggedInUser !== props.player1 && props.loggedInUser !== "NONE") {
-      return <a href={"/api/join/" + props.id}><button className="join">JOIN</button></a>
+      return <button onClick={this.joinGame} className="join">JOIN</button>
     }
     else if(props.player2 !== null) {
       return <span>{props.player2Name}</span>

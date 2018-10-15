@@ -16,5 +16,9 @@ export default {
 
   createGame: function() {
     return axios.post("/api/games");
+  },
+
+  joinGame: function(gameID) {
+    return axios.put("/api/join/" + gameID);
   }
 };

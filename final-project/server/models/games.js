@@ -1,11 +1,5 @@
 module.exports = function(sequelize, DataTypes){
     const Games = sequelize.define('Games', {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-        },
         active: {
             type: DataTypes.BOOLEAN,
             allowNull: false,

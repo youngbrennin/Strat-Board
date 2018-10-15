@@ -1,3 +1,5 @@
+const game = require('../util/game/game');
+
 module.exports = function (app, db) {
 
   app.get("/api/cards", function(req, res) {
@@ -25,21 +27,14 @@ module.exports = function (app, db) {
     if(!req.user || req.user.activeGame != 0){
       return res.json(false);
     }
-    db.Games
-      .create({
-      player1: req.user.id,
-      player1Name: req.user.name
-    })
-      .then((response) => {
-        db.Users.find({where : {id : req.user.id}})
-          .then((user) => {
-            user.update({activeGame : response.dataValues.id})
-              .then((updateRes) => {
-                user.save();
-                return res.json(true);
-              })
-          })
-      })
+    return game.newGame(req.user, res.json.bind(res));
+  })
+
+  app.put("/api/join/:id", function(req, res) {
+    if(!req.user || req.user.activeGame != 0){
+      return res.json(false);
+    }
+    return game.joinGame(req.user.id, req.user.name, req.params.id, res.json.bind(res));
   })
 
 }
