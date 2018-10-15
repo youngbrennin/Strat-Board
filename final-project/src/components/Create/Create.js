@@ -3,7 +3,7 @@ import "./Create.css";
 
 const CreateButton = () => {
     return (
-    <div class="row center-align">
+    <div className="row center-align">
         <button>CREATE</button>
     </div>
     )

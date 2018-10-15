@@ -1,27 +1,69 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Splash.css";
+import api from "../../../utils/api";
 
-const Splash = () => (
-  <div>
-    
-      <div className="bg">
-        <div className="login">
+class Splash extends Component {
 
-          <div className="jumbotron text-center">
-            <p>Welcome to Card Chess!</p>
-            <p>Login or Register with:</p>
+  state = {
+    loggedIn : false,
+    userName : ""
+  }
 
-            
-            <a href="auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google</a>
+  loginButton = () => {
+    if(this.state.loggedIn === false){
+      this.loginElement = <span>  
+        <p>Welcome to Card Chess!</p>
+        <p>Login or Register with:</p>
+        <a href="auth/google" className="btn btn-danger"><span className="fa fa-google-plus"></span> Google</a>
+      </span>
+    }
+    else {
+      this.loginElement = <span>Welcome back, {this.state.userName}!<br /><a href="/matchmaking">Proceed to Card Chess!</a><br /><a id="notYou" href="/auth/logout">Not you?</a></span>
+    }
+
+    return this.loginElement;
+  }
+  
+
+
+  render() {
+    return(
+      <div>
+        
+          <div className="bg">
+            <div className="login">
+
+              <div className="jumbotron text-center">
+
+                {this.loginButton()}
+                
+
+              </div>
+            </div>
 
           </div>
-          {/* <button className="loginBtn">Login</button> */}
         </div>
+    );
+  }
 
-      </div>
-    </div>
+  componentDidMount() {
+    this.checkUser();
+  }
 
+  checkUser = () => {
+    api.getUserData().then(user => {
+        if(user.data){
+            this.setState({
+              loggedIn : true,
+              userName : user.data.name
+            });
+        }
+        else {
+            this.setState({loggedIn : false});
+        }
+    })
+}
 
-);
+};
 
 export default Splash;

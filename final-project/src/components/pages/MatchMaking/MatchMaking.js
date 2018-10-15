@@ -9,8 +9,8 @@ class MatchMaking extends Component {
 
     state = {
         user : {
-            id : "",
-            name : "Loading...",
+            id : "NONE",
+            name : "Anonymous",
             winCount : "",
             loseCount : "",
             activeGame : ""
@@ -28,7 +28,7 @@ class MatchMaking extends Component {
 
     render() {
         return (
-            <div>{console.log(this.state.user)}
+            <div>
                 <Welcome 
                 name = {this.state.user.name}
                 winCount = {this.state.user.winCount}
@@ -45,7 +45,14 @@ class MatchMaking extends Component {
     
     getUserData = () => {
         api.getUserData().then(user => {
-            this.setState({user : user.data});
+            if(user.data){
+                this.setState({user : user.data});
+            }
+            else {
+                this.setState({user : {
+                    name : "Anonymous"
+                }});
+            }
         })
     }
 }

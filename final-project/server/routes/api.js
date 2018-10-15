@@ -9,7 +9,7 @@ module.exports = function (app, db) {
 
   app.get("/api/user", function(req, res) {
     if(!req.user){
-        return res.redirect("/");
+        res.json(false);
     }
     res.json(req.user);
   });

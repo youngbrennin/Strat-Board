@@ -11,3 +11,8 @@
     font-weight: bolder;
     font-size: 25px;
 }
+
+.loginBtn {
+    background-color: black;
+    color: white;
+}
