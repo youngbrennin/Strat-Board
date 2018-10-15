@@ -1,19 +1,29 @@
 module.exports = function(sequelize, DataTypes){
     const Cards = sequelize.define('Cards', {
-        name: {
+        type: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        damage: {
+        owner: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 0
+            allowNull: false
         },
-        id: {
+        gameID: {
             type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        location: {
+            type: DataTypes.STRING,
             allowNull: false,
-            defaultValue: 0,
-            primaryKey: true
+            defaultValue: "deck"
+        },
+        x: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        y: {
+            type: DataTypes.INTEGER,
+            allowNull: true
         }
 
     },

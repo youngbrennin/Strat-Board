@@ -27,7 +27,7 @@ module.exports = function (app, db) {
     if(!req.user || req.user.activeGame != 0){
       return res.json(false);
     }
-    return res.json(newGame(req.user));
+    return newGame(req.user, res.json.bind(res));
   })
 
 }
