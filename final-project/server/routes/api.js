@@ -1,4 +1,4 @@
-const newGame = require('../util/game/newGame');
+const game = require('../util/game/game');
 
 module.exports = function (app, db) {
 
@@ -27,7 +27,14 @@ module.exports = function (app, db) {
     if(!req.user || req.user.activeGame != 0){
       return res.json(false);
     }
-    return newGame(req.user, res.json.bind(res));
+    return game.newGame(req.user, res.json.bind(res));
+  })
+
+  app.put("/api/join/:id", function(req, res) {
+    if(!req.user || req.user.activeGame != 0){
+      return res.json(false);
+    }
+    return game.joinGame(req.user.id, req.user.name, req.params.id, res.json.bind(res));
   })
 
 }

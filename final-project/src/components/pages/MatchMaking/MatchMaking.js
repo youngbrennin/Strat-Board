@@ -28,7 +28,9 @@ class MatchMaking extends Component {
             player1Name = {game.player1Name}
             player2 = {game.player2}
             player2Name = {game.player2Name}
-            loggedInUser = {this.state.user.id} />
+            loggedInUser = {this.state.user.id}
+            getGames = {this.getGames}
+            getUser = {this.getUserData} />
         });
         return listofGames
     }
