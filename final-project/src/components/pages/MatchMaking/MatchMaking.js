@@ -12,7 +12,7 @@ class MatchMaking extends Component {
             name : "Anonymous",
             winCount : "",
             loseCount : "",
-            activeGame : ""
+            activeGame : 0
         },
         games: {}
     };
@@ -33,7 +33,13 @@ class MatchMaking extends Component {
         return listofGames
     }
 
-
+    showCreate() {
+        if(this.state.user.id !== "NONE" && this.state.user.activeGame == 0) {
+            return <Create
+            getGames = {this.getGames}
+            getUser = {this.getUserData} />
+        }
+    }
 
     render() {
         return (
@@ -43,7 +49,7 @@ class MatchMaking extends Component {
                 winCount = {this.state.user.winCount}
                 loseCount = {this.state.user.loseCount} />
                 {this.showGames()}
-                <Create />
+                {this.showCreate()}
             </div>
         );
     }
