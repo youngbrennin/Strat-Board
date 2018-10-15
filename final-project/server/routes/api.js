@@ -9,7 +9,7 @@ module.exports = function (app, db) {
 
   app.get("/api/user", function(req, res) {
     if(!req.user){
-        res.json(false);
+        return res.json(false);
     }
     res.json(req.user);
   });
@@ -20,6 +20,27 @@ module.exports = function (app, db) {
         res.json(allGames);
       })
   });
+
+  app.post("/api/games", function(req, res) {
+    if(!req.user || req.user.activeGame != 0){
+      return res.json(false);
+    }
+    db.Games
+      .create({
+      player1: req.user.id,
+      player1Name: req.user.name
+    })
+      .then((response) => {
+        db.Users.find({where : {id : req.user.id}})
+          .then((user) => {
+            user.update({activeGame : response.dataValues.id})
+              .then((updateRes) => {
+                user.save();
+                return res.json(true);
+              })
+          })
+      })
+  })
 
 }
 

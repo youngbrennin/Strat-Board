@@ -30,6 +30,7 @@ module.exports = function(app, passport, db){
                 loseCount : User.loseCount,
                 activeGame : User.activeGame
             }
+            console.log(user);
             cb(null, user);
         });
     }
@@ -41,7 +42,23 @@ module.exports = function(app, passport, db){
     });
 
     passport.deserializeUser(function(user, callback){
-    console.log('deserialize user.');
-    callback(null, user);
+        db.Users.find({
+            where: {
+                id: user.id
+            }
+        })
+        .then((User) => {
+            let user = {
+                // Yes, I did use both user and User here.
+                id : User.id,
+                name : User.userName,
+                winCount : User.winCount,
+                loseCount : User.loseCount,
+                activeGame : User.activeGame
+            }
+            
+            console.log('deserialize user.');
+            callback(null, user);
+        });
     });
 }

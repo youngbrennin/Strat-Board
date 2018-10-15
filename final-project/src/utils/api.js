@@ -12,5 +12,9 @@ export default {
 
   getGames: function() {
     return axios.get("/api/games");
+  },
+
+  createGame: function() {
+    return axios.post("/api/games");
   }
 };
