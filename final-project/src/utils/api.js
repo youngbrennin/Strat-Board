@@ -8,5 +8,9 @@ export default {
 
   getUserData: function() {
     return axios.get("/api/user");
+  },
+
+  getGames: function() {
+    return axios.get("/api/games");
   }
 };

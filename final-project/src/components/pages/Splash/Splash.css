@@ -20,8 +20,7 @@ body, html {
 }
 
 .jumbotron {
-    height:30vh;
-    width: 30vw;
+    width: 40vw;
     background-color: white;
     position: absolute;
     opacity: .5;
@@ -35,4 +34,8 @@ body, html {
 .loginBtn {
     background-color: black;
     color: white;
+}
+
+.littleText {
+    font-size: 15px;
 }
