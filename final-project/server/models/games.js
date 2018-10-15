@@ -1,25 +1,37 @@
 module.exports = function(sequelize, DataTypes){
-    const Game = sequelize.define('Game', {
+    const Games = sequelize.define('Games', {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: 0,
             primaryKey: true
         },
+        active: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true
+        },
         player1: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 15
+            allowNull: false
+        },
+        player1Name: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
         player2: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 1
+            allowNull: true
+        },
+        player2Name: {
+            type: DataTypes.STRING,
+            allowNull: true
         },
         activePlayer: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
+            defaultValue: 1
         }
     });
-    return Game;
+    return Games;
 }

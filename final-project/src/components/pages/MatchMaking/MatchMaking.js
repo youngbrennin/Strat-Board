@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import Create from "../../Create/Create";
-// import JoinButton from "./Join/Join";
-import UserList from "../../UserList/UserList";
 import Welcome from "../../Welcome/Welcome";
 import api from "../../../utils/api";
+import ListedGame from "../../ListedGame";
 
 class MatchMaking extends Component {
 
@@ -15,13 +14,23 @@ class MatchMaking extends Component {
             loseCount : "",
             activeGame : ""
         },
-        player: []
+        games: {}
     };
 
-    listing() {
-        if (this.state.players.length === 0) return <p>There appears to be no games available. Please create by clicking thre create button below...</p>;
+    showGames() {
+        if (this.state.games[0] === undefined) return <p>There do not appear to be any available games at this time. Please create by clicking the create button below...</p>;
 
-        return <ul>{this.state.players.map(player => <li key={player}>{player}</li>)}</ul>;
+        const listofGames = this.state.games.map((game) => {
+            return <ListedGame
+            key = {game.id}
+            id = {game.id}
+            player1 = {game.player1}
+            player1Name = {game.player1Name}
+            player2 = {game.player2}
+            player2Name = {game.player2Name}
+            loggedInUser = {this.state.user.id} />
+        });
+        return listofGames
     }
 
 
@@ -33,7 +42,7 @@ class MatchMaking extends Component {
                 name = {this.state.user.name}
                 winCount = {this.state.user.winCount}
                 loseCount = {this.state.user.loseCount} />
-                <UserList />
+                {this.showGames()}
                 <Create />
             </div>
         );
@@ -41,6 +50,7 @@ class MatchMaking extends Component {
 
     componentDidMount() {
         this.getUserData();
+        this.getGames();
     }
     
     getUserData = () => {
@@ -50,10 +60,21 @@ class MatchMaking extends Component {
             }
             else {
                 this.setState({user : {
-                    name : "Anonymous"
+                    name : "Anonymous",
+                    id : "NONE"
                 }});
             }
         })
+    }
+
+    getGames = () => {
+        api.getGames()
+            .then(gamesList => {
+                this.setState({
+                    user : this.state.user,
+                    games : gamesList.data
+                })
+            })
     }
 }
 // /* // const MatchMaking = () => (

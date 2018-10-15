@@ -15,10 +15,11 @@ class Splash extends Component {
         <p>Welcome to Card Chess!</p>
         <p>Login or Register with:</p>
         <a href="auth/google" className="btn btn-danger"><span className="fa fa-google-plus"></span> Google</a>
+        <p>Or <a href="/matchmaking">Click here</a> to spectate!</p>
       </span>
     }
     else {
-      this.loginElement = <span>Welcome back, {this.state.userName}!<br /><a href="/matchmaking">Proceed to Card Chess!</a><br /><a id="notYou" href="/auth/logout">Not you?</a></span>
+      this.loginElement = <span>Welcome back, {this.state.userName}!<br /><a href="/matchmaking">Proceed to Card Chess!</a><br /><a className="littleText" href="/auth/logout">Not you?</a></span>
     }
 
     return this.loginElement;
