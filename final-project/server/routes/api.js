@@ -37,6 +37,19 @@ module.exports = function (app, db) {
     return game.joinGame(req.user.id, req.user.name, req.params.id, res.json.bind(res));
   })
 
+  app.get("/api/game/:id", function(req, res) {
+    let activeUser = "";
+    if(!req.user){
+      activeUser = "NONE";
+    }
+    else {
+      activeUser = req.user.id;
+    }
+    
+    // why am I not using promises? cb feels so sloppy...
+    return game.loadGame(req.params.id, activeUser, res.json.bind(res));
+  })
+
 }
 
 

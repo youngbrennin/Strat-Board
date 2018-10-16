@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes){
         activePlayer: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            defaultValue: 1
+            defaultValue: 0
         }
     });
     return Games;

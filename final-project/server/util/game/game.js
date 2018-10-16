@@ -1,3 +1,4 @@
+const Sequelize = require('sequelize');
 const db = require('../../models');
 
 const game = {
@@ -44,8 +45,13 @@ const game = {
                 db.Users
                 .find({where : {id : user.id}})
                 .then((user) => {
-                    user.update({activeGame : response.dataValues.id})
-                        .then((updateRes) => {
+                    user
+                        .update({
+                            activeGame : response.dataValues.id,
+                            hp : 20,
+                            ap : 2
+                        })
+                        .then(() => {
                             user.save();
                             return this.makeDeck(response.dataValues.id, user.id, cb);
                         })
@@ -59,15 +65,19 @@ const game = {
                 if(game.dataValues.player2 === null){
                     game.update({
                         player2 : userID,
-                        player2Name : userName
+                        player2Name : userName,
+                        activePlayer : game.dataValues.player1
                     })
                     .then(() => {
                         db.Users
                             .find({where : {id : userID}})
                             .then((user) => {
-                                user.update({activeGame : gameID})
+                                user.update({
+                                    activeGame : gameID,
+                                    hp : 20,
+                                    ap : 2
+                                })
                                     .then((updateRes) => {
-                                        user.save();
                                         return this.makeDeck(gameID, userID, cb);
                                     })
                             })
@@ -77,6 +87,71 @@ const game = {
             })
 
         
+    },
+    loadGame : function(gameID, userID, cb) {
+        db.Games
+            .find({where : {id : gameID}})
+            .then((result) => {
+                const game = result.dataValues;
+                let searchObject = {}
+                if(game.player1 === userID) {
+                    searchObject = {
+                        [Sequelize.Op.or]: [
+                            {
+                                gameID : gameID,
+                                location : "board"
+                            },
+                            {
+                                gameID : gameID,
+                                location : "hand",
+                                owner : userID
+                            }
+                        ]
+                    }
+                }
+                else if(game.player2 === userID){
+                    searchObject = {
+                        [Sequelize.Op.or]: [
+                            {
+                                gameID : gameID,
+                                location : "board"
+                            },
+                            {
+                                gameID : gameID,
+                                location : "hand",
+                                owner : userID
+                            }
+                        ]
+                    }
+                }
+                else {
+                    searchObject = {
+                        gameID : gameID,
+                        location : "board"
+                    }
+                }
+
+                db.Cards
+                    .findAll({where : searchObject})
+                    .then((result) => {
+                        const cards = result;
+                        let returnCards = [];
+                        cards.forEach(card => {
+                            returnCards.push(card.dataValues);
+                        });
+
+                        let gameState = {
+                            gameID : game.id,
+                            player1 : game.player1,
+                            player1Name : game.player1Name,
+                            player2 : game.player2,
+                            player2Name : game.player2Name,
+                            activePlayer : game.activePlayer,
+                            cards : returnCards
+                        }
+                        return cb(gameState);
+                    })
+            })
     }
 }
 

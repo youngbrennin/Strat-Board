@@ -28,7 +28,9 @@ module.exports = function(app, passport, db){
                 name : User.userName,
                 winCount : User.winCount,
                 loseCount : User.loseCount,
-                activeGame : User.activeGame
+                activeGame : User.activeGame,
+                hp : User.hp,
+                ap : User.ap
             }
             console.log(user);
             cb(null, user);
@@ -54,7 +56,9 @@ module.exports = function(app, passport, db){
                 name : User.userName,
                 winCount : User.winCount,
                 loseCount : User.loseCount,
-                activeGame : User.activeGame
+                activeGame : User.activeGame,
+                hp : User.hp,
+                ap : User.ap
             }
             
             console.log('deserialize user.');
