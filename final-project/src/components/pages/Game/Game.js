@@ -26,6 +26,7 @@ class Game extends Component {
     api.getCardGameState(this.props.match.params.gameID).then(res => {
             console.log(res); 
             // this.setState({ deck: res.data });
+            this.setState(res.data);
             console.log(this.state);      
           })
           .catch(err => console.log(err));
@@ -69,19 +70,16 @@ CardsInHand = () => {
         <div className="row">
            <div className="col s3">
             {this.CardsInHand()}
-            <HPAP>
+            <HPAP hp={this.state.player1HP} ap={this.state.player1AP}/>
 
-            </HPAP>
           </div>
           <div className="col s6">
             <Board />
           </div>
           <div className="col s3">
             {this.CardsInHand()}
-            <HPAP> 
-            
+            <HPAP hp={this.state.player2HP} ap={this.state.player2AP} /> 
 
-            </HPAP>
           </div>
           </div>
  
