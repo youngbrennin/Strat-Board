@@ -20,5 +20,9 @@ export default {
 
   joinGame: function(gameID) {
     return axios.put("/api/join/" + gameID);
+  },
+
+  getCardGameState: function(gameID) {
+    return axios.get("/api/game/" + gameID);
   }
 };
