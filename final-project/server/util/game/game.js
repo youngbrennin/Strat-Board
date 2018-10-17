@@ -39,7 +39,9 @@ const game = {
         db.Games
             .create({
                 player1: user.id,
-                player1Name: user.name
+                player1Name: user.name,
+                player1hp : 20,
+                player1ap : 2
             })
             .then((response) => {
                 db.Users
@@ -47,9 +49,7 @@ const game = {
                 .then((user) => {
                     user
                         .update({
-                            activeGame : response.dataValues.id,
-                            hp : 20,
-                            ap : 2
+                            activeGame : response.dataValues.id
                         })
                         .then(() => {
                             user.save();
@@ -66,16 +66,16 @@ const game = {
                     game.update({
                         player2 : userID,
                         player2Name : userName,
-                        activePlayer : game.dataValues.player1
+                        activePlayer : game.dataValues.player1,
+                        player2hp : 20,
+                        player2ap : 2
                     })
                     .then(() => {
                         db.Users
                             .find({where : {id : userID}})
                             .then((user) => {
                                 user.update({
-                                    activeGame : gameID,
-                                    hp : 20,
-                                    ap : 2
+                                    activeGame : gameID
                                 })
                                     .then((updateRes) => {
                                         return this.makeDeck(gameID, userID, cb);
