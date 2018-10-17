@@ -13,12 +13,28 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING,
             allowNull: false
         },
+        player1hp: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        player1ap: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
         player2: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
         player2Name: {
             type: DataTypes.STRING,
+            allowNull: true
+        },
+        player2hp: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        player2ap: {
+            type: DataTypes.INTEGER,
             allowNull: true
         },
         activePlayer: {

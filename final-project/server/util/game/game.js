@@ -144,8 +144,12 @@ const game = {
                             gameID : game.id,
                             player1 : game.player1,
                             player1Name : game.player1Name,
+                            player1AP : game.player1ap,
+                            player1HP : game.player1hp,
                             player2 : game.player2,
                             player2Name : game.player2Name,
+                            player2AP : game.player2ap,
+                            player2HP : game.player2AP,
                             activePlayer : game.activePlayer,
                             cards : returnCards
                         }
