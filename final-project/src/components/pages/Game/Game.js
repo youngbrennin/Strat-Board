@@ -16,18 +16,30 @@ class Game extends Component {
   };
 
   componentDidMount() {
-    this.loadCards()
+    this.loadGameState();
+    // this.loadGame()
   }
   
-  loadCards = () => {
-    api.getCards()
-      .then(res => {
-        console.log(res.data); 
-        this.setState({ deck: res.data });
-        console.log(this.state);      
-      })
-      .catch(err => console.log(err));
-  };
+  loadGameState = () => {
+    // console.log('loadGameState fired');
+    // console.log(this.props);
+    api.getCardGameState(this.props.match.params.gameID).then(res => {
+            console.log(res); 
+            // this.setState({ deck: res.data });
+            console.log(this.state);      
+          })
+          .catch(err => console.log(err));
+  } 
+
+  // loadCards = () => {
+  //   api.getCards()
+  //     .then(res => {
+  //       console.log(res.data); 
+  //       this.setState({ deck: res.data });
+  //       console.log(this.state);      
+  //     })
+  //     .catch(err => console.log(err));
+  // };
 
 
 
