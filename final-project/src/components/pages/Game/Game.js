@@ -3,7 +3,7 @@ import Board from "../../Board/Board";
 import Cards from "../../Cards/Cards";
 import cards from "../../../cards.json";
 import api from "../../../utils/api";
-
+import HPAP from "../../HPAP/HPAP";
 
 
 class Game extends Component {
@@ -12,7 +12,7 @@ class Game extends Component {
     cards,
     CardsInHand: [],
     deck: [],
-    hand: []
+    hand: [],
   };
 
   componentDidMount() {
@@ -43,7 +43,7 @@ CardsInHand = () => {
     
     return (
       hand.map(e => {
-        return (<Cards name={cards[e].name} damage={cards[e].damage} image={cards[e].image} imageTwo={cards[e].imageTwo} />)
+        return (<Cards name={cards[e].name} damage={cards[e].damage} image={cards[e].image} />)
       })
       )
     }
@@ -55,14 +55,24 @@ CardsInHand = () => {
         <div>
 
         <div className="row">
+           <div className="col s3">
+            {this.CardsInHand()}
+            <HPAP>
+
+            </HPAP>
+          </div>
           <div className="col s6">
             <Board />
           </div>
-          <div className="col s6">
+          <div className="col s3">
             {this.CardsInHand()}
-          </div>
-        </div>
+            <HPAP> 
+            
 
+            </HPAP>
+          </div>
+          </div>
+ 
       </div>
     );
   }
@@ -70,7 +80,7 @@ CardsInHand = () => {
 
 export default Game;
 
-  // shuffle = () => {
+  {/* // shuffle = () => {
   //   console.log("Shuffling...");
   //   const cards = this.state.cards;
   //   for (var i = 0; i < cards.length - 1; i++) {
@@ -79,4 +89,4 @@ export default Game;
   //     cards[j] = cards[i];
   //     cards[i] = temp;
   //   }
-  // }
+  // } */}

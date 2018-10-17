@@ -14,8 +14,8 @@ class Splash extends Component {
       this.loginElement = <span>  
         <p>Welcome to Card Chess!</p>
         <p>Login or Register with:</p>
-        <a href="auth/google" className="btn btn-danger"><span className="fa fa-google-plus"></span> Google</a>
-        <p>Or <a href="/matchmaking">Click here</a> to spectate!</p>
+        <a href="/auth/google" className="btn btn-danger"><span className="fa fa-google-plus"></span> Google</a>
+        <p className="littleText">Or <a href="/matchmaking">Click here</a> to spectate!</p>
       </span>
     }
     else {
