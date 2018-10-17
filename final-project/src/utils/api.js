@@ -23,6 +23,7 @@ export default {
   },
 
   getCardGameState: function(gameID) {
+    // console.log('api getCardGameState fired');
     return axios.get("/api/game/" + gameID);
   }
 };
