@@ -38,6 +38,7 @@ module.exports = function (app, db) {
   })
 
   app.get("/api/game/:id", function(req, res) {
+    // console.log('endpoint api/game/id =', req.params.id);    
     let activeUser = "";
     if(!req.user){
       activeUser = "NONE";

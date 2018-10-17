@@ -89,9 +89,11 @@ const game = {
         
     },
     loadGame : function(gameID, userID, cb) {
+        // console.log('loadGame params ====================>>>>', gameID, userID, cb);
         db.Games
             .find({where : {id : gameID}})
             .then((result) => {
+                // console.log('db query =================================' ,result);
                 const game = result.dataValues;
                 let searchObject = {}
                 if(game.player1 === userID) {
