@@ -6,13 +6,13 @@ const Cards = props => (
     <div className="card">
       <div className="img-container">
         <img className="cardBackground" alt={props.name} src={props.image} />
-        <img className="cardMove" alt={props.name} src={props.imageTwo} />
+        {/* <img className="cardMove" alt={props.name} src={props.imageTwo} /> */}
       </div>
       <div className="content">
         <ul>
-          <li>
+          {/* <li>
             <strong>Name:</strong> {props.name}
-          </li>
+          </li> */}
           <li>
             <strong>Damage:</strong> {props.damage}
           </li>

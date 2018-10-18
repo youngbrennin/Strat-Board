@@ -48,16 +48,19 @@ module.exports = function (app, db) {
     
     // why am I not using promises? cb feels so sloppy...
     return game.loadGame(req.params.id, activeUser, res.json.bind(res));
-  })
+  });
+
+  // app.put("/api/game/:id/moveCard", function(req, res) {
+  //   if(!req.user || )
+  //   const cardID = req.body.cardID;
+  //   const destination = req.body.destination;
+
+  // });
 
 }
 
 
-// This code *might* work to send people back to the splash screen when not logged in
-//
-// if(!req.user){
-//   return res.redirect("/");
-// }
+
   
   
 
