@@ -13,6 +13,7 @@ class Game extends Component {
     CardsInHand: [],
     deck: [],
     hand: [],
+
   };
 
   componentDidMount() {
@@ -70,7 +71,7 @@ CardsInHand = () => {
         <div className="row">
            <div className="col s3">
             {this.CardsInHand()}
-            <HPAP hp={this.state.player1HP} ap={this.state.player1AP}/>
+            <HPAP hp={this.state.player1hp} ap={this.state.player1ap}/>
 
           </div>
           <div className="col s6">
@@ -78,7 +79,7 @@ CardsInHand = () => {
           </div>
           <div className="col s3">
             {this.CardsInHand()}
-            <HPAP hp={this.state.player2HP} ap={this.state.player2AP} /> 
+            <HPAP hp={this.state.player2hp} ap={this.state.player2ap} /> 
 
           </div>
           </div>
