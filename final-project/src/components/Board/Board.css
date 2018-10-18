@@ -28,7 +28,7 @@
 .container {
     width: 800px !important;
     height: 100% !important;
-    margin-left: 5%;
+    margin-left: 10%;
     margin-top: 2%;
 }
 
@@ -48,5 +48,5 @@
 
 .card {
       float: left;
-      margin: 1%;
+      margin: 0%;
   }

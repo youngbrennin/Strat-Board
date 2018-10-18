@@ -39,9 +39,7 @@ const game = {
         db.Games
             .create({
                 player1: user.id,
-                player1Name: user.name,
-                player1hp : 20,
-                player1ap : 2
+                player1Name: user.name
             })
             .then((response) => {
                 db.Users
@@ -49,7 +47,9 @@ const game = {
                 .then((user) => {
                     user
                         .update({
-                            activeGame : response.dataValues.id
+                            activeGame : response.dataValues.id,
+                            hp : 20,
+                            ap : 2
                         })
                         .then(() => {
                             user.save();
@@ -66,16 +66,16 @@ const game = {
                     game.update({
                         player2 : userID,
                         player2Name : userName,
-                        activePlayer : game.dataValues.player1,
-                        player2hp : 20,
-                        player2ap : 2
+                        activePlayer : game.dataValues.player1
                     })
                     .then(() => {
                         db.Users
                             .find({where : {id : userID}})
                             .then((user) => {
                                 user.update({
-                                    activeGame : gameID
+                                    activeGame : gameID,
+                                    hp : 20,
+                                    ap : 2
                                 })
                                     .then((updateRes) => {
                                         return this.makeDeck(gameID, userID, cb);
@@ -89,11 +89,9 @@ const game = {
         
     },
     loadGame : function(gameID, userID, cb) {
-        // console.log('loadGame params ====================>>>>', gameID, userID, cb);
         db.Games
             .find({where : {id : gameID}})
             .then((result) => {
-                // console.log('db query =================================' ,result);
                 const game = result.dataValues;
                 let searchObject = {}
                 if(game.player1 === userID) {
@@ -141,7 +139,6 @@ const game = {
                         cards.forEach(card => {
                             returnCards.push(card.dataValues);
                         });
-
                         let gameState = {
                             gameID : game.id,
                             player1 : game.player1,
@@ -150,15 +147,17 @@ const game = {
                             player1HP : game.player1hp,
                             player2 : game.player2,
                             player2Name : game.player2Name,
-                            player2AP : game.player2ap,
-                            player2HP : game.player2AP,
-                            activePlayer : game.activePlayer,
-                            cards : returnCards
-                        }
+							player2AP : game.player2ap,
+							player2HP : game.player2AP,
+							activePlayer : game.activePlayer,
+							cards : returnCards
+						}
                         return cb(gameState);
                     })
             })
     }
 }
+
+
 
 module.exports = game;
