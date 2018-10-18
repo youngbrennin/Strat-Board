@@ -9,15 +9,11 @@ import api from "../../../utils/api";
 class Game extends Component {
   // Setting this.state.cards to the cards json array
   state = {
-    cards,
-    CardsInHand: [],
-    deck: [],
-    hand: []
+    loading : true;
   };
 
   componentDidMount() {
     this.loadGameState();
-    // this.loadGame()
   }
   
   loadGameState = () => {
@@ -30,18 +26,6 @@ class Game extends Component {
           })
           .catch(err => console.log(err));
   } 
-
-  // loadCards = () => {
-  //   api.getCards()
-  //     .then(res => {
-  //       console.log(res.data); 
-  //       this.setState({ deck: res.data });
-  //       console.log(this.state);      
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-
-
 
 
 CardsInHand = () => {
