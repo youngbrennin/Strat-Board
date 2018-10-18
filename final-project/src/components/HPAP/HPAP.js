@@ -2,10 +2,10 @@ import React from "react";
 import "./HPAP.css";
 
 
-const HPAP = () => (
+const HPAP = (props) => (
     <div >
-        <p className="HP">HP:</p>
-        <p className="AP">AP:</p>
+        <p className="HP">HP: {props.hp}</p>
+        <p className="AP">AP: {props.ap}</p>
     </div>
   );
 

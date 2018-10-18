@@ -21,25 +21,30 @@ const game = {
         "king"
     ],
     makeDeck : function(gameID, user, cb) {
-        let queryArray = [];
-        this.defaultCards.forEach((card) => {
-            queryArray.push({
-                type : card,
-                owner : user,
-                gameID : gameID,
-                location : "deck"
-            })
-        });
-        db.Cards.bulkCreate(queryArray)
-            .then(() => {
-                return cb(true);
-            })
+        return new Promise((resolve, reject) => {
+            let queryArray = [];
+            this.defaultCards.forEach((card) => {
+                queryArray.push({
+                    type : card,
+                    owner : user,
+                    gameID : gameID,
+                    location : "deck"
+                })
+            });
+            db.Cards.bulkCreate(queryArray)
+                .then(() => {
+                    resolve(true);
+                })
+        })
+        
     },
     newGame : function(user, cb) {
         db.Games
             .create({
                 player1: user.id,
-                player1Name: user.name
+                player1Name: user.name,
+                player1hp : 20,
+                player1ap : 2
             })
             .then((response) => {
                 db.Users
@@ -48,12 +53,15 @@ const game = {
                     user
                         .update({
                             activeGame : response.dataValues.id,
-                            hp : 20,
-                            ap : 2
+                            player1hp : 20,
+                            player1ap : 2
                         })
                         .then(() => {
                             user.save();
-                            return this.makeDeck(response.dataValues.id, user.id, cb);
+                            this.makeDeck(response.dataValues.id, user.id)
+                                .then((status) => {
+                                    return cb(status);
+                                })
                         })
                 })
             })
@@ -66,19 +74,24 @@ const game = {
                     game.update({
                         player2 : userID,
                         player2Name : userName,
-                        activePlayer : game.dataValues.player1
+                        activePlayer : game.dataValues.player1,
+                        player2hp : 20,
+                        player2ap : 2
                     })
                     .then(() => {
                         db.Users
                             .find({where : {id : userID}})
                             .then((user) => {
                                 user.update({
-                                    activeGame : gameID,
-                                    hp : 20,
-                                    ap : 2
+                                    activeGame : gameID
                                 })
                                     .then((updateRes) => {
-                                        return this.makeDeck(gameID, userID, cb);
+                                        this.makeDeck(gameID, userID)
+                                            .then((status) => {
+                                                this.drawToFive(gameID, game.dataValues.player1);
+                                                this.drawToFive(gameID, userID);
+                                                return cb(true);
+                                            })
                                     })
                             })
                     })
@@ -148,16 +161,59 @@ const game = {
                             player2 : game.player2,
                             player2Name : game.player2Name,
 							player2AP : game.player2ap,
-							player2HP : game.player2AP,
+							player2HP : game.player2hp,
 							activePlayer : game.activePlayer,
 							cards : returnCards
-						}
+                        }
                         return cb(gameState);
                     })
             })
+    },
+    drawToFive : function(gameID, userID) {
+        db.Games
+            .find({where : {id : gameID}})
+            .then((result) => {
+                const game = result.dataValues;
+                if(game.player1 === userID || game.player2 === userID) {
+                    db.Cards
+                        .findAll({where : {
+                            gameID : gameID,
+                            location : "hand",
+                            owner : userID
+                        }})
+                        .then((result) => {
+                            let cardsInHand = result.length;
+
+                            db.Cards
+                                .findAll({where : {
+                                    gameID : gameID,
+                                    location : "deck",
+                                    owner : userID
+                                }})
+                                .then((result) => {
+                                    const cards = result;
+                                    let selectedCard = {};
+                                    let newCards = [];
+                                    while(cardsInHand < 5) {
+                                        selectedCardID = Math.floor(Math.random() * cards.length - 1);
+                                        selectedCard = cards.splice(selectedCardID, 1);
+                                        newCards.push(selectedCard[0].dataValues.id);
+                                        cardsInHand++;
+                                    } 
+                                    db.Cards
+                                        .update({
+                                            location : "hand"
+                                        }, {
+                                            where: {id : newCards}
+                                        })
+                                        .then((result) => {
+                                            return result;
+                                        })
+                                });
+                        });
+                }
+            });
     }
 }
-
-
 
 module.exports = game;

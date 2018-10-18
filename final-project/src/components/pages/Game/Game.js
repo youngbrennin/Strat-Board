@@ -7,25 +7,14 @@ import HPAP from "../../HPAP/HPAP";
 
 
 class Game extends Component {
-  // Setting this.state.cards to the cards json array
-  state = {
-    cards,
-    CardsInHand: [],
-    deck: [],
-    hand: [],
-
-  };
+  state = {};
 
   componentDidMount() {
     this.loadGameState();
   }
   
   loadGameState = () => {
-    // console.log('loadGameState fired');
-    // console.log(this.props);
     api.getCardGameState(this.props.match.params.gameID).then(res => {
-            console.log(res); 
-            // this.setState({ deck: res.data });
             this.setState(res.data);
             console.log(this.state);      
           })
@@ -58,7 +47,9 @@ CardsInHand = () => {
         <div className="row">
            <div className="col s3">
             {this.CardsInHand()}
-            <HPAP hp={this.state.player1hp} ap={this.state.player1ap}/>
+            <HPAP
+              hp = {this.state.player1HP}
+              ap = {this.state.player1AP} />
 
           </div>
           <div className="col s6">
@@ -66,7 +57,9 @@ CardsInHand = () => {
           </div>
           <div className="col s3">
             {this.CardsInHand()}
-            <HPAP hp={this.state.player2hp} ap={this.state.player2ap} /> 
+            <HPAP 
+              hp = {this.state.player2HP}
+              ap = {this.state.player2AP} /> 
 
           </div>
           </div>
@@ -78,13 +71,4 @@ CardsInHand = () => {
 
 export default Game;
 
-  {/* // shuffle = () => {
-  //   console.log("Shuffling...");
-  //   const cards = this.state.cards;
-  //   for (var i = 0; i < cards.length - 1; i++) {
-  //     var j = i + Math.floor(Math.random() * (cards.length - i));
-  //     var temp = cards[j];
-  //     cards[j] = cards[i];
-  //     cards[i] = temp;
-  //   }
-  // } */}
+ 
