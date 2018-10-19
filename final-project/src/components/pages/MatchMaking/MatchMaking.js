@@ -65,6 +65,9 @@ class MatchMaking extends Component {
         api.getUserData().then(user => {
             if(user.data){
                 this.setState({user : user.data});
+                if(user.data.name === "") {
+                    this.modalPopup();
+                }
             }
             else {
                 this.setState({user : {
@@ -73,6 +76,10 @@ class MatchMaking extends Component {
                 }});
             }
         })
+    }
+
+    modalPopup = () => {
+        
     }
 
     getGames = () => {

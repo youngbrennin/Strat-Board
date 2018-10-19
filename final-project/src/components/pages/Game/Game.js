@@ -41,7 +41,19 @@ class Game extends Component {
   //     .catch(err => console.log(err));
   // };
 
+// MakeBoardDots = () => {
 
+//   if() {
+
+//   }
+
+//   return (
+//     <div>
+
+//     </div>
+//   )
+
+// }
 
 
 CardsInHand = () => {
