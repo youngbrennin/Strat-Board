@@ -1,0 +1,137 @@
+
+[
+    {
+      "id": 1,
+      "name": "Pawn",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902122/63174903-vector-single-sketch-chess-figure-pawn-on-white-background.jpg",
+      "damage": "8",
+      "imageTwo": "../../images/pawnChart.png"
+
+    },
+    {
+      "id": 2,
+      "name": "Pawn",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902122/63174903-vector-single-sketch-chess-figure-pawn-on-white-background.jpg",
+      "damage": "8",
+      "imageTwo": "../../images/pawnChart.png"
+
+
+    },
+    {
+      "id": 3,
+      "name": "Pawn",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902122/63174903-vector-single-sketch-chess-figure-pawn-on-white-background.jpg",
+      "damage": "8",
+      "imageTwo": "../../images/pawnChart.png"
+
+
+    },
+    {
+      "id": 4,
+      "name": "Pawn",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902122/63174903-vector-single-sketch-chess-figure-pawn-on-white-background.jpg",
+      "damage": "8",
+      "imageTwo": "../../images/pawnChart.png"
+
+
+    },
+    {
+      "id": 5,
+      "name": "Pawn",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902122/63174903-vector-single-sketch-chess-figure-pawn-on-white-background.jpg",
+      "damage": "8",
+      "imageTwo": "../../images/pawnChart.png"
+
+
+    },
+    {
+      "id": 6,
+      "name": "Pawn",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902122/63174903-vector-single-sketch-chess-figure-pawn-on-white-background.jpg",
+      "damage": "8",
+      "imageTwo": "../../images/pawnChart.png"
+
+    },
+    {
+      "id": 7,
+      "name": "Pawn",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902122/63174903-vector-single-sketch-chess-figure-pawn-on-white-background.jpg",
+      "damage": "8",
+      "imageTwo": "../../images/pawnChart.png"
+
+
+    },
+    {
+      "id": 8,
+      "name": "Pawn",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902122/63174903-vector-single-sketch-chess-figure-pawn-on-white-background.jpg",
+      "damage": "8",
+      "imageTwo": "../../images/pawnChart.png"
+
+
+    },
+    {
+      "id": 9,
+      "name": "Rook",
+      "image": "https://us.123rf.com/450wm/nikiteev/nikiteev1609/nikiteev160902123/63174906-vector-single-sketch-chess-figure-rook-on-white-background.jpg?ver=6",
+      "damage": "6",
+      "imageTwo": "../../images/rookChart.png"
+
+    },
+    {
+      "id": 10,
+      "name": "Rook",
+      "image": "https://us.123rf.com/450wm/nikiteev/nikiteev1609/nikiteev160902123/63174906-vector-single-sketch-chess-figure-rook-on-white-background.jpg?ver=6",
+      "damage": "6",
+      "imageTwo": "../../images/rookChart.png"
+
+    },
+    {
+      "id": 11,
+      "name": "Knight",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902124/63174905-vector-single-sketch-chess-figure-knight-on-white-background.jpg",
+      "damage": "4",
+      "imageTwo": "../../images/knightChart.png"
+
+    },
+    {
+      "id": 12,
+      "name": "Knight",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902124/63174905-vector-single-sketch-chess-figure-knight-on-white-background.jpg",
+      "damage": "4",
+      "imageTwo": "../../images/knightChart.png"
+
+    },
+    {
+      "id": 13,
+      "name": "Bishop",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902127/63174911-vektor-einzelne-skizze-schach-figur-bischof-auf-wei%C3%9Fem-hintergrund.jpg",
+      "damage": "5",
+      "imageTwo": "../../images/bishopChart.png"
+    },
+    {
+      "id": 14,
+      "name": "Bishop",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902127/63174911-vektor-einzelne-skizze-schach-figur-bischof-auf-wei%C3%9Fem-hintergrund.jpg",
+      "damage": "5",
+      "imageTwo": "../../images/bishopChart.png"
+    },
+    
+    {
+      "id": 15,
+      "name": "Queen",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902126/63174907-vector-single-sketch-chess-figure-queen-on-white-background.jpg",
+      "damage": "3",
+      "imageTwo": "../../images/queenChart.png"
+
+    },
+    {
+      "id": 16,
+      "name": "King",
+      "image": "https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902125/63174908-vector-single-sketch-chess-figure-king-on-white-background.jpg",
+      "damage": "7",
+      "imageTwo": "../../images/kingChart.png"
+
+    }
+  ]
+  

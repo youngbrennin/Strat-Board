@@ -1,0 +1,41 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("./chess.png");
+
+    /* Full height */
+    height: 100vh; 
+
+    
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.jumbotron {
+    width: 40vw;
+    background-color: white;
+    position: absolute;
+    opacity: .5;
+    text-align: center;
+    margin-left: 30%;
+    margin-top: 15%;
+    color: black;
+    font-size: 32px;
+}
+
+.loginBtn {
+    background-color: black;
+    color: white;
+}
+
+.littleText {
+    font-size: 15px;
+}
