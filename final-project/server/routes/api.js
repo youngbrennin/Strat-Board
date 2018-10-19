@@ -38,7 +38,6 @@ module.exports = function (app, db) {
   })
 
   app.get("/api/game/:id", function(req, res) {
-    // console.log('endpoint api/game/id =', req.params.id);    
     let activeUser = "";
     if(!req.user){
       activeUser = "NONE";
@@ -51,10 +50,12 @@ module.exports = function (app, db) {
     return game.loadGame(req.params.id, activeUser, res.json.bind(res));
   });
 
-  app.put("/api/game/:id/moveCard", function(req, res) {
-    console.log(req.body.test);
-    res.json(true);
-  });
+  // app.put("/api/game/:id/moveCard", function(req, res) {
+  //   if(!req.user || )
+  //   const cardID = req.body.cardID;
+  //   const destination = req.body.destination;
+
+  // });
 
 }
 
