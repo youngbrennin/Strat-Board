@@ -3,9 +3,28 @@
 const makePath = require('./makePath');
 const cardUtil = require('./cardUtil');
 
-const makeCard = function(x, y, cardName = "none") {
-    this.x = x;
-    this.y = y;
+const makeCard = function(cardObject, gameObject) {
+    this.gameID = cardObject.gameID;
+    this.id = cardObject.id;
+    this.type = cardObject.type;
+    this.owner = cardObject.owner;
+    this.x = cardObject.x;
+    this.y = cardObject.y;
+    this.location = cardObject.location;
+    this.gameObject = gameObject;
+
+    if(this.location === "hand") {
+        if(this.owner === this.gameObject.player1ID) {
+            this.x = 0;
+            this.y = 0;
+            this.type = "fromHand";
+        }
+        else if(this.owner === this.gameObject.player2ID) {
+            this.x = 0;
+            this.y = 7;
+            this.type = "fromHand";
+        }
+    }
 
     this.paths = [];
 
@@ -15,8 +34,12 @@ const makeCard = function(x, y, cardName = "none") {
     }
 
     // define paths for all pieces
-    switch(cardName){
+    switch(this.type){
         case "none":
+            break;
+        case "fromHand":
+            makePath.addSegment("move", 2, 0, 4)
+            this.addPath(makePath.getAndReset());
             break;
         case "rook":
             makePath.addSegment("standard", 0, 1, 4);
@@ -126,36 +149,22 @@ const makeCard = function(x, y, cardName = "none") {
         return position;
     }
 
-    this.getValidMoves = function(cardArray) {
+    this.getValidMoves = function() {
         // Input should be an array of card objects that are on the board
         // This assumes that the cards have a getPosition() method that returns {x: x, y: y}
 
         let validMoves = [];
 
         this.paths.forEach(path => {
-            let theseMoves = cardUtil.checkPath(cardArray, path, this.x, this.y);
+            let theseMoves = cardUtil.checkPath(this.gameObject.cards, path, this.x, this.y);
             validMoves = validMoves.concat(theseMoves);
         });
-        console.log(validMoves)
         return validMoves;
+    }
+
+    this.checkMove = function(x, y) {
+
     }
 }
 
 module.exports = makeCard;
-
-let cardArray = [new makeCard(0, 1)];
-let thisCard = new makeCard(3,1,"rook");
-thisCard.getValidMoves(cardArray);
-
-// path array format
-// [
-//     {
-//         type: "move",
-//         x: 1,
-//         y: 0
-//     },
-//     {
-//         type: "attack",
-//         x: -1
-//     }
-// ]

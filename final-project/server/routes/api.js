@@ -2,13 +2,6 @@ const game = require('../util/game/game');
 
 module.exports = function (app, db) {
 
-  app.get("/api/cards", function(req, res) {
-    db.Cards.findAll({})
-      .then(function(dbCards) {
-        res.json(dbCards);
-      });
-  });
-
   app.get("/api/user", function(req, res) {
     if(!req.user){
         return res.json(false);
@@ -50,14 +43,9 @@ module.exports = function (app, db) {
     return game.loadGame(req.params.id, activeUser, res.json.bind(res));
   });
 
-  // app.put("/api/game/:id/moveCard", function(req, res) {
-  //   if(!req.user || )
-  //   const cardID = req.body.cardID;
-  //   const destination = req.body.destination;
-
-  // });
-
-}
+// Calling game.getGameObject(gameID, UserID) will give you the full game object including it's checks.
+// Simply use the functions on the opject to check if an interation is valid and then make the db change.
+// The same object is available in the state of the Game component.
 
 
 

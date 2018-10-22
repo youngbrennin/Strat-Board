@@ -16,10 +16,10 @@ module.exports = {
 
         const returnTiles = [];
 
-        relativeX = originX;
-        relativeY = originY;
+        var relativeX = originX;
+        var relativeY = originY;
 
-        path.forEach(thisSpot => {
+        path.forEach(thisSpot => {console.log(relativeX, relativeY)
             relativeX += thisSpot.x;
             relativeY += thisSpot.y;
             let mapSpot = false;
