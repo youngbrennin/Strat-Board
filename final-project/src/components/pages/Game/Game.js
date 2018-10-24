@@ -32,23 +32,6 @@ class Game extends Component {
           .catch(err => console.log(err));
   } 
 
-<<<<<<< HEAD
-  // movePiece = () => {
-  //   if (onClick(makeGame.player1ID && makeGame.cards[card.id])) {
-  //     return this.setState(card.id === Tile)
-  //   } else {
-  //     return this.setState(card.id && makeGame.player2ID === Tile)
-  //   }
-  // }
-
-
-CardsInHand = () => {
-    var hand = [];
-    for (var i = 0; i < 5; i++) {
-      var random = Math.floor(Math.random() * (16 - i));
-      
-      hand.push(random);
-=======
   addCardBacks = (data) => {
     if(data.cardLocations.player1Hand.length === 0){
       for(let i = 0; i < 5; i++){
@@ -58,7 +41,6 @@ CardsInHand = () => {
           damage : "???"
         })
       }
->>>>>>> dfd2fe0e13c810249d6c3f19a5734dfb70a39304
     }
     else if(data.cardLocations.player2Hand.length === 0) {
       for(let i = 0; i < 5; i++){
