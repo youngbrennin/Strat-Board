@@ -16,17 +16,21 @@ const Cards = (props) => {
     }
 
     this.selectCard = function(event) {
-      console.log(event.target.getAttribute("cardID"));
-    }
-
-    this.addClick = function() {
-      if(props.activePlayer == props.owner == props.loggedInPlayer){
-        return this.selectCard
+      let card = props.game.cards[event.target.getAttribute("cardID")];
+      if(card){// this is a kludgey workaround for if the object doesn't exist at the moment of click
+        let moveList = card.getValidMoves();
+        
+      }
+      else {
+        console.log("failed to find card object");
       }
     }
 
-    return <div onClick={this.addClick()} className="card">
-      <div cardID={props.id} className="img-container">
+    // pls refactor
+    this.addClick = function() {
+      if(props.activePlayer == props.owner == props.loggedInPlayer){
+        return <div onClick={(event) => {this.selectCard(event)}} className="card">
+        <div cardID={props.id} className="img-container">
         <img className="cardBackground" alt={props.type} src={"/" + props.type + ".png"} />
       </div>
       <div className="content">
@@ -35,6 +39,22 @@ const Cards = (props) => {
         </ul>
       </div>
     </div>
+      }
+      else {
+        return <div className="card"><div cardID={props.id} className="img-container">
+        <img className="cardBackground" alt={props.type} src={"/" + props.type + ".png"} />
+      </div>
+      <div className="content">
+        <ul>
+          {this.displayDamage()}
+        </ul>
+      </div>
+    </div>
+      }
+    }
+
+    return this.addClick()
+      
 };
 
    

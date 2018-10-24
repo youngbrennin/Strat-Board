@@ -13,7 +13,8 @@ const Hand = (props) => {
       type = {card.type}
       damage = {card.damage}
       activePlayer = {props.activePlayer}
-      loggedInPlayer = {props.loggedInPlayer} />
+      loggedInPlayer = {props.loggedInPlayer}
+      game = {props.game} />
     })
   }
 

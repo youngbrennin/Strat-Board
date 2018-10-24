@@ -19,7 +19,7 @@ module.exports = {
         var relativeX = originX;
         var relativeY = originY;
 
-        path.forEach(thisSpot => {console.log(relativeX, relativeY)
+        path.forEach(thisSpot => {
             relativeX += thisSpot.x;
             relativeY += thisSpot.y;
             let mapSpot = false;

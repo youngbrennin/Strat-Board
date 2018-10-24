@@ -85,7 +85,8 @@ class Game extends Component {
            <Hand
            cards = {this.state.cardLocations.player1Hand}
            activePlayer = {this.state.activePlayer}
-           loggedInPlayer = {this.state.user.id} />
+           loggedInPlayer = {this.state.user.id}
+           game = {this.state} />
             <HPAP
               hp = {this.state.player1HP}
               ap = {this.state.player1AP} />
@@ -95,13 +96,15 @@ class Game extends Component {
             <Board
             cards = {this.state.cardLocations.board}
             activePlayer = {this.state.activePlayer}
-            loggedInPlayer = {this.state.user.id} />
+            loggedInPlayer = {this.state.user.id}
+            game = {this.state} />
           </div>
           <div className="col s3">
            <Hand
            cards = {this.state.cardLocations.player2Hand}
            activePlayer = {this.state.activePlayer}
-           loggedInPlayer = {this.state.user.id} />
+           loggedInPlayer = {this.state.user.id}
+           game = {this.state} />
             <HPAP 
               hp = {this.state.player2HP}
               ap = {this.state.player2AP} /> 
