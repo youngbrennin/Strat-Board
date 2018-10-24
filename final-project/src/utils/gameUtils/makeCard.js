@@ -13,7 +13,7 @@ const makeCard = function(cardObject, gameObject) {
     this.location = cardObject.location;
     this.gameObject = gameObject;
 
-    this.gameObject.addCardLocation(this.id, this.location, this.owner, this.x, this.y)
+    this.gameObject.addCardLocation(cardObject)
 
     if(this.location === "hand") {
         if(this.owner === this.gameObject.player1ID) {

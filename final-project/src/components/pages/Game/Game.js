@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Board from "../../Board/Board";
 import Cards from "../../Cards/Cards";
+import Hand from "../../Hand/Hand";
 import cards from "../../../cards.json";
 import api from "../../../utils/api";
 import HPAP from "../../HPAP/HPAP";
@@ -9,7 +10,13 @@ const makeGame = require('../../../utils/gameUtils/makeGame');
 
 
 class Game extends Component {
-  state = {};
+  state = {
+    cardLocations : {
+      player1Hand : [],
+      player2Hand : [],
+      board : {}
+    }
+  };
 
   componentDidMount() {
     this.loadGameState();
@@ -17,30 +24,35 @@ class Game extends Component {
   
   loadGameState = () => {
     api.getCardGameState(this.props.match.params.gameID).then(res => {
-            this.setState(new makeGame(res.data));
+            const game = this.addCardBacks(new makeGame(res.data));
+            this.setState(game);
             console.log(this.state)
           })
           .catch(err => console.log(err));
   } 
 
-
-CardsInHand = () => {
-    var hand = [];
-    for (var i = 0; i < 5; i++) {
-      var random = Math.floor(Math.random() * (16 - i));
-      
-      hand.push(random);
+  addCardBacks = (data) => {
+    if(data.cardLocations.player1Hand.length === 0){
+      for(let i = 0; i < 5; i++){
+        data.cardLocations.player1Hand.push({
+          id : 0,
+          type : "back",
+          damage : "???"
+        })
+      }
     }
-    console.log(hand);
-    
-    return (
-      hand.map(e => {
-        return (<Cards name={cards[e].name} damage={cards[e].damage} image={cards[e].image} />)
-      })
-      )
+    else if(data.cardLocations.player2Hand.length === 0) {
+      for(let i = 0; i < 5; i++){
+        data.cardLocations.player1Hand.push({
+          id : 0,
+          type : "back",
+          damage : "???"
+        })
+      }
     }
-
-  
+    return data;
+  }
+ 
     
     render() {
       return (
@@ -48,7 +60,9 @@ CardsInHand = () => {
 
         <div className="row">
            <div className="col s3">
-            {this.CardsInHand()}
+           <Hand
+           cards = {
+             this.state.cardLocations.player1Hand} />
             <HPAP
               hp = {this.state.player1HP}
               ap = {this.state.player1AP} />
@@ -58,7 +72,8 @@ CardsInHand = () => {
             <Board />
           </div>
           <div className="col s3">
-            {this.CardsInHand()}
+           <Hand
+           cards = {this.state.cardLocations.player2Hand} />
             <HPAP 
               hp = {this.state.player2HP}
               ap = {this.state.player2AP} /> 

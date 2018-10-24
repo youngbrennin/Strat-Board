@@ -16,27 +16,32 @@ const makeGame = function(gameObject) {
     this.player2HP = gameObject.player2HP;
     this.player2Name = gameObject.player2Name;
 
-    this.addCardLocation = function(cardID, location, owner, x, y) {
+    this.addCardLocation = function(cardObject) {
+        const cardData = {
+            id : cardObject.id,
+            location : cardObject.location,
+            owner : cardObject.owner,
+            type : cardObject.type,
+            x : cardObject.x,
+            y : cardObject.y
+        }
+
+        const location = cardObject.location;
+        const owner = cardObject.owner;
+        const x = cardObject.x;
+        const y = cardObject.y;
+
         if(location === "board") {
             if(!this.cardLocations.board[x]){
                 this.cardLocations.board[x] = {};
             }
-            this.cardLocations.board[x][y] = {
-                id : cardID,
-                owner : owner
-            };
+            this.cardLocations.board[x][y] = cardData;
         }
         else if(location === "hand" && owner === this.player1ID) {
-            this.cardLocations.player1Hand.push({
-                id : cardID,
-                owner : owner
-            })
+            this.cardLocations.player1Hand.push(cardData)
         }
         else if(location === "hand" && owner === this.player2ID) {
-            this.cardLocations.player2Hand.push({
-                id : cardID,
-                owner : owner
-            })
+            this.cardLocations.player2Hand.push(cardData)
         }
     }
 
