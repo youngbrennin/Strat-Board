@@ -46,7 +46,7 @@ module.exports = function (app, db) {
 // Calling game.getGameObject(gameID, UserID) will give you the full game object including it's checks.
 // Simply use the functions on the opject to check if an interation is valid and then make the db change.
 // The same object is available in the state of the Game component.
-
+}
 
 
   

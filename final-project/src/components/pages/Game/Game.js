@@ -4,6 +4,7 @@ import Cards from "../../Cards/Cards";
 import cards from "../../../cards.json";
 import api from "../../../utils/api";
 import HPAP from "../../HPAP/HPAP";
+// import Tile from "../../Tile";
 
 const makeGame = require('../../../utils/gameUtils/makeGame');
 
@@ -22,6 +23,14 @@ class Game extends Component {
           })
           .catch(err => console.log(err));
   } 
+
+  // movePiece = () => {
+  //   if (onClick(makeGame.player1ID && makeGame.cards[card.id])) {
+  //     return this.setState(card.id === Tile)
+  //   } else {
+  //     return this.setState(card.id && makeGame.player2ID === Tile)
+  //   }
+  // }
 
 
 CardsInHand = () => {
