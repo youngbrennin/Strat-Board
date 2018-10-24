@@ -15,12 +15,18 @@ const Cards = (props) => {
       }
     }
 
-    this.addClick = function() {
-      
+    this.selectCard = function(event) {
+      console.log(event.target.getAttribute("cardID"));
     }
 
-    return <div className="card">
-      <div className="img-container">
+    this.addClick = function() {
+      if(props.activePlayer == props.owner == props.loggedInPlayer){
+        return this.selectCard
+      }
+    }
+
+    return <div onClick={this.addClick()} className="card">
+      <div cardID={props.id} className="img-container">
         <img className="cardBackground" alt={props.type} src={"/" + props.type + ".png"} />
       </div>
       <div className="content">

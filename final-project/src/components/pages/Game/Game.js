@@ -11,6 +11,13 @@ const makeGame = require('../../../utils/gameUtils/makeGame');
 
 class Game extends Component {
   state = {
+    user : {
+      id : "NONE",
+      name : "Anonymous",
+      winCount : "",
+      loseCount : "",
+      activeGame : 0
+  },
     cardLocations : {
       player1Hand : [],
       player2Hand : [],
@@ -18,8 +25,23 @@ class Game extends Component {
     }
   };
 
+  getUserData = () => {
+    api.getUserData().then(user => {
+        if(user.data){
+            this.setState({user : user.data});
+        }
+        else {
+            this.setState({user : {
+                name : "Anonymous",
+                id : "NONE"
+            }});
+        }
+    })
+}
+
   componentDidMount() {
     this.loadGameState();
+    this.getUserData();
   }
   
   loadGameState = () => {
@@ -43,7 +65,7 @@ class Game extends Component {
     }
     else if(data.cardLocations.player2Hand.length === 0) {
       for(let i = 0; i < 5; i++){
-        data.cardLocations.player1Hand.push({
+        data.cardLocations.player2Hand.push({
           id : 0,
           type : "back",
           damage : "???"
@@ -61,8 +83,9 @@ class Game extends Component {
         <div className="row">
            <div className="col s3">
            <Hand
-           cards = {
-             this.state.cardLocations.player1Hand} />
+           cards = {this.state.cardLocations.player1Hand}
+           activePlayer = {this.state.activePlayer}
+           loggedInPlayer = {this.state.user.id} />
             <HPAP
               hp = {this.state.player1HP}
               ap = {this.state.player1AP} />
@@ -70,11 +93,15 @@ class Game extends Component {
           </div>
           <div className="col s6">
             <Board
-            cards = {this.state.cardLocations.board} />
+            cards = {this.state.cardLocations.board}
+            activePlayer = {this.state.activePlayer}
+            loggedInPlayer = {this.state.user.id} />
           </div>
           <div className="col s3">
            <Hand
-           cards = {this.state.cardLocations.player2Hand} />
+           cards = {this.state.cardLocations.player2Hand}
+           activePlayer = {this.state.activePlayer}
+           loggedInPlayer = {this.state.user.id} />
             <HPAP 
               hp = {this.state.player2HP}
               ap = {this.state.player2AP} /> 

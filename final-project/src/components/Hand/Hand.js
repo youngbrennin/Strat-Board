@@ -9,8 +9,11 @@ const Hand = (props) => {
       return <Cards
       key = {card.id}
       id = {card.id}
+      owner = {card.owner}
       type = {card.type}
-      damage = {card.damage} />
+      damage = {card.damage}
+      activePlayer = {props.activePlayer}
+      loggedInPlayer = {props.loggedInPlayer} />
     })
   }
 
