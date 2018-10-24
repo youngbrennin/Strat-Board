@@ -5,6 +5,8 @@ import cards from "../../../cards.json";
 import api from "../../../utils/api";
 import HPAP from "../../HPAP/HPAP";
 
+const makeGame = require('../../../utils/gameUtils/makeGame');
+
 
 class Game extends Component {
   state = {};
@@ -15,8 +17,8 @@ class Game extends Component {
   
   loadGameState = () => {
     api.getCardGameState(this.props.match.params.gameID).then(res => {
-            this.setState(res.data);
-            console.log(this.state);      
+            this.setState(new makeGame(res.data));
+            console.log(this.state);
           })
           .catch(err => console.log(err));
   } 

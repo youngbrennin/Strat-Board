@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../../models');
+const makeGame = require('../../../src/utils/gameUtils/makeGame');
 
 const game = {
     defaultCards : [
@@ -213,6 +214,11 @@ const game = {
                         });
                 }
             });
+    },
+    getGameObject : function(gameID, userID) {
+        const gameData = this.loadGame(gameID, userID);
+        const gameObject = makeGame(gameData);
+        return gameObject;
     }
 }
 
