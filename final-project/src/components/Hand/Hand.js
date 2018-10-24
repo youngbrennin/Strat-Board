@@ -8,6 +8,7 @@ const Hand = (props) => {
     return props.cards.map((card) => {
       return <Cards
       key = {card.id}
+      id = {card.id}
       type = {card.type}
       damage = {card.damage} />
     })

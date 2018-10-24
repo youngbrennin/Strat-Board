@@ -69,7 +69,8 @@ class Game extends Component {
 
           </div>
           <div className="col s6">
-            <Board />
+            <Board
+            cards = {this.state.cardLocations.board} />
           </div>
           <div className="col s3">
            <Hand

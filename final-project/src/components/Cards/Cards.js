@@ -15,9 +15,13 @@ const Cards = (props) => {
       }
     }
 
+    this.addClick = function() {
+      
+    }
+
     return <div className="card">
       <div className="img-container">
-        <img className="cardBackground" alt={props.type} src={props.type + ".png"} />
+        <img className="cardBackground" alt={props.type} src={"/" + props.type + ".png"} />
       </div>
       <div className="content">
         <ul>
