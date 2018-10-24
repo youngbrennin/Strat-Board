@@ -1,17 +1,17 @@
-.Tile {
+.tile {
     background: transparent;
     border: 1px solid transparent;
     float: left;
     font-size: 24px;
     font-weight: bold;
     line-height: 34px;
-    height: 48px;
+    height: 100px;
+    width: 100px;
     margin-right: -1px;
     margin-top: -1px;
     padding: 0;
     text-align: center;
-    width: 48px;
-    overflow:auto;
+    overflow: hidden;
   }
   .Tile:focus {
     outline: none;
