@@ -16,10 +16,42 @@ const makeGame = function(gameObject) {
     this.player2HP = gameObject.player2HP;
     this.player2Name = gameObject.player2Name;
 
+    this.addCardLocation = function(cardID, location, owner, x, y) {
+        if(location === "board") {
+            if(!this.cardLocations.board[x]){
+                this.cardLocations.board[x] = {};
+            }
+            this.cardLocations.board[x][y] = {
+                id : cardID,
+                owner : owner
+            };
+        }
+        else if(location === "hand" && owner === this.player1ID) {
+            this.cardLocations.player1Hand.push({
+                id : cardID,
+                owner : owner
+            })
+        }
+        else if(location === "hand" && owner === this.player2ID) {
+            this.cardLocations.player2Hand.push({
+                id : cardID,
+                owner : owner
+            })
+        }
+    }
+
+    this.cardLocations = {
+        player1Hand : [],
+        player2Hand : [],
+        board : {}
+    };
+
     this.cards = [];
     cardsListArray.forEach((card) => {
         this.cards[card.id] = new makeCard(card, this);
     });
+
+    
 
     this.canActivePlayerAct = function() {
         if(this.activePlayer === this.player1 && this.player1AP > 0 || this.activePlayer === this.player2 && this.player2AP > 0) {

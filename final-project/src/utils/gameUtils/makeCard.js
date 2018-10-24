@@ -13,17 +13,22 @@ const makeCard = function(cardObject, gameObject) {
     this.location = cardObject.location;
     this.gameObject = gameObject;
 
+    this.gameObject.addCardLocation(this.id, this.location, this.owner, this.x, this.y)
+
     if(this.location === "hand") {
         if(this.owner === this.gameObject.player1ID) {
             this.x = 0;
             this.y = 0;
-            this.type = "fromHand";
+            this.moveType = "fromHand";
         }
         else if(this.owner === this.gameObject.player2ID) {
             this.x = 0;
             this.y = 7;
-            this.type = "fromHand";
+            this.moveType = "fromHand";
         }
+    }
+    else {
+        this.moveType = this.type;
     }
 
     this.paths = [];
@@ -34,7 +39,7 @@ const makeCard = function(cardObject, gameObject) {
     }
 
     // define paths for all pieces
-    switch(this.type){
+    switch(this.moveType){
         case "none":
             break;
         case "fromHand":

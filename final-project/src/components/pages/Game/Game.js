@@ -18,7 +18,7 @@ class Game extends Component {
   loadGameState = () => {
     api.getCardGameState(this.props.match.params.gameID).then(res => {
             this.setState(new makeGame(res.data));
-            console.log(this.state);
+            console.log(this.state)
           })
           .catch(err => console.log(err));
   } 
