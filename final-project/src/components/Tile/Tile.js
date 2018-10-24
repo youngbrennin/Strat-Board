@@ -7,8 +7,8 @@ import "./Tile.css";
   return (
     <div className="col s1.5">
     <div id="whiteSquare" className="card-panel"> 
-        <span> {props.i} X {props.j}
-</span>
+        <span> {props.x} X {props.y}</span>
+        {props.children}
     </div>
 </div>
 

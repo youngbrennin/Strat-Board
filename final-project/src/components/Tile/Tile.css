@@ -11,6 +11,7 @@
     padding: 0;
     text-align: center;
     width: 48px;
+    overflow:auto;
   }
   .Tile:focus {
     outline: none;
