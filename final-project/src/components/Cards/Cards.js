@@ -2,24 +2,30 @@ import React from "react";
 import "./Cards.css";
 
 
-const Cards = props => (
-    <div className="card">
+const Cards = (props) => {
+
+    this.displayDamage = function() {
+      if(props.damage === "???"){
+        return
+      }
+      else {
+        return <li>
+          <strong>Damage:</strong> {props.damage}
+        </li>
+      }
+    }
+
+    return <div className="card">
       <div className="img-container">
-        <img className="cardBackground" alt={props.name} src={props.image} />
-        {/* <img className="cardMove" alt={props.name} src={props.imageTwo} /> */}
+        <img className="cardBackground" alt={props.type} src={props.type + ".png"} />
       </div>
       <div className="content">
         <ul>
-          {/* <li>
-            <strong>Name:</strong> {props.name}
-          </li> */}
-          <li>
-            <strong>Damage:</strong> {props.damage}
-          </li>
+          {this.displayDamage()}
         </ul>
       </div>
     </div>
-  );
+};
 
    
 export default Cards;
